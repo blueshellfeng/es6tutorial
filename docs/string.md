@@ -880,8 +880,9 @@ String.raw({ raw: ['t','e','s','t'] }, 0, 1, 2);
 String.raw = function (strings, ...values) {
   let output = '';
   let index;
-  for (index = 0; index < values.length; index++) {
-    output += strings.raw[index] + values[index];
+  let len = strings.raw.length-1;
+  for (index = 0; index < len; index++) {
+    output += strings.raw[index] + (values[index] !== undefined ? values[index] : '');
   }
 
   output += strings.raw[index]
